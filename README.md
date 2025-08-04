@@ -29,4 +29,78 @@ Each service:
 ---
 
 ## 📁 Project Structure
+netflix-microservices-clone/
+├── infrastructure/ # Terraform for AWS EKS
+├── charts/ # Helm charts for each microservice
+├── services/ # Microservice source code (Dockerized)
+├── argocd/ # ArgoCD app configs
+├── .github/workflows/ # GitHub Actions CI/CD pipelines
+├── README.md
+└── LICENSE
 
+
+---
+
+## 🚀 Deployment Overview
+
+### 1. ✅ Infrastructure (Terraform)
+cd infrastructure/eks
+terraform init
+terraform apply
+Creates:
+
+AWS VPC
+
+EKS Cluster
+
+IAM roles
+
+Kubeconfig context
+
+2. 🐳 Docker & GitHub Actions
+Each service is:
+
+Built using Docker
+
+Pushed to DockerHub or ECR via GitHub Actions
+
+Automatically deployed using Helm via ArgoCD
+
+✅ Update in services/* triggers GitHub Actions → image build → Helm upgrade via ArgoCD.
+
+3. ☸️ Helm Charts
+Each service has its own Helm chart:
+
+bash
+Copy
+Edit
+cd charts/user-service
+helm upgrade --install user-service . -f values.yaml
+4. 🎯 ArgoCD (GitOps)
+Install ArgoCD:
+
+bash
+Copy
+Edit
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+Apply ArgoCD Application:
+
+bash
+Copy
+Edit
+kubectl apply -f argocd/app.yaml
+Access ArgoCD UI and sync applications.
+
+🧪 Local Development
+bash
+Copy
+Edit
+cd services/user-service
+docker build -t user-service:dev .
+docker run -p 8001:8001 user-service:dev
+
+✍️ Author
+Aditya Pawar
+🔗 GitHub
+📧 adityapawar@example.com
