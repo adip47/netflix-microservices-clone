@@ -100,7 +100,3 @@ cd services/user-service
 docker build -t user-service:dev .
 docker run -p 8001:8001 user-service:dev
 
-✍️ Author
-Aditya Pawar
-🔗 GitHub
-📧 adityapawar@example.com
