@@ -1,1 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ .Chart.Name }}-vs
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - istio-system/istio-ingressgateway
+  http:
+    - match:
+        - uri:
+            prefix: "/{{ .Chart.Name }}"
+      route:
+        - destination:
+            host: {{ .Chart.Name }}
+            port:
+              number: 80
 # ingress.yaml
