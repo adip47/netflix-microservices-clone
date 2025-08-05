@@ -1,0 +1,12 @@
+{{- range .Values.microservices }}
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: {{ .name }}-dr
+spec:
+  host: {{ .name }}
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+---
+{{- end }}
