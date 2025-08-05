@@ -1,0 +1,21 @@
+{{- range .Values.microservices }}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ .name }}-vs
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - netflix-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /{{ .path }}
+      route:
+        - destination:
+            host: {{ .name }}
+            port:
+              number: 80
+---
+{{- end }}
