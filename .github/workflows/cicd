@@ -1,0 +1,20 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [user, auth, video, watch-history]
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build Docker image
+      run: docker build -t ${{ matrix.service }} ./services/${{ matrix.service }}
+
+    - name: Helm dry-run deploy
+      run: helm upgrade --install ${{ matrix.service }} ./helm-charts/${{ matrix.service }} --dry-run
