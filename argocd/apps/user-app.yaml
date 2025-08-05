@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: user-service
+  namespace: argocd
+spec:
+  project: netflix-project
+  source:
+    repoURL: https://github.com/your-username/netflix-clone-helm.git
+    targetRevision: HEAD
+    path: helm/user
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
