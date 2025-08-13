@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="banner (2).png" alt="Netflix Microservices Clone" width="100%" />
+  <img src="banner (2).png" alt="Netflix Microservices Clone" width="60%" />
 </p>
 # 🎬 Netflix Microservices Clone
 
