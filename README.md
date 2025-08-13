@@ -1,7 +1,7 @@
 <p align="center">
   <img src="banner (2).png" alt="Netflix Microservices Clone" width="60%" />
 </p>
-# 🎬 Netflix Microservices Clone
+
 
 A cloud-native microservices application inspired by Netflix architecture, built using:
 
@@ -82,23 +82,15 @@ helm upgrade --install user-service . -f values.yaml
 4. 🎯 ArgoCD (GitOps)
 Install ArgoCD:
 
-bash
-Copy
-Edit
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 Apply ArgoCD Application:
 
-bash
-Copy
-Edit
 kubectl apply -f argocd/app.yaml
 Access ArgoCD UI and sync applications.
 
 🧪 Local Development
-bash
-Copy
-Edit
+
 cd services/user-service
 docker build -t user-service:dev .
 docker run -p 8001:8001 user-service:dev
