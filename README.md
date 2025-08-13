@@ -74,9 +74,6 @@ Automatically deployed using Helm via ArgoCD
 3. ☸️ Helm Charts
 Each service has its own Helm chart:
 
-bash
-Copy
-Edit
 cd charts/user-service
 helm upgrade --install user-service . -f values.yaml
 4. 🎯 ArgoCD (GitOps)
