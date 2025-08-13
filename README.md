@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="banner (2).png" alt="Netflix Microservices Clone" width="100%" />
+</p>
 # 🎬 Netflix Microservices Clone
 
 A cloud-native microservices application inspired by Netflix architecture, built using:
